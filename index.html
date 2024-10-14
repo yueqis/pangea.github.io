@@ -152,18 +152,16 @@
         
         <p class="text abstract">
 
-            We introduce Cambrian-1, a family of multimodal LLMs (MLLMs) designed with a <strong>vision-<i>centric</i></strong> approach. 
-            While stronger language models can enhance multimodal capabilities, 
-            the design choices for vision components are often insufficiently explored and disconnected from visual representation learning research. 
-
+            We introduce Pangea-7B, a fully open multilingual multimodal language model (MLLM) designed to bridge multilingual and multicultural gaps in visual understanding tasks. 
+            Pangea-7B is trained on PangeaIns, a diverse 6M instruction dataset spanning 39 languages.
+            Pangea-7B is evaluated on PangeaBench, a holistic evaluation suite encompassing 14 datasets covering 47 languages.
+            Pangea-7B demonstrates state-of-the-art results, outperforming existing open models in multilingual and culturally diverse contexts.
             <br><br>
-            Cambrian-1 is structured around five key pillars, each offering important insights into the design space of MLLMs:
+            Pangea is structured around three key aspects, each offering important insights into the design space of MLLMs:
             <ol class="text">
-                <li><strong><a href="#visual_representations">&sect;Visual Representations</a></strong>: We explore various vision encoders and their combinations.</li>
-                <li><strong><a href="#connector_design">&sect;Connector Design</a></strong>: We design a new dynamic and <i>spatially-aware</i> connector that integrates visual features from several models with LLMs while reducing the number of tokens.</li>
-                <li><strong><a href="#instruction_data">&sect;Instruction Tuning Data</a></strong>: We curate high-quality visual instruction-tuning data from public sources, emphasizing the importance of distribution balancing.</li>
-                <li><strong><a href="#sec:inst_tuning">&sect;Instruction Tuning Recipes</a></strong>: We discuss instruction tuning strategies and practices.</li>
-                <li><strong><a href="#sec:benchmarking">&sect;Benchmarking</a></strong>: We examine existing MLLM benchmarks and introduce a new vision-centric benchmark "CV-Bench".</li>
+                <li><strong><a href="#model">&sect;Pangea-7B</a></strong>: a strong multilingual multimodal LLM capable of 39 languages.</li>
+                <li><strong><a href="#instruction_data">&sect;Instruction Tuning Data</a></strong>: We construct a instruction tuning dataset PangeaIns, a diverse dataset with 6 million multilingual multimodal instruction tuning data spanning 39 languages, which Pangea-7B is trained on.</li>
+                <li><strong><a href="#sec:benchmarking">&sect;Benchmarking</a></strong>: We construct a multilingual multimodal evaluation benchmark PangeaBench, including 14 datasets spanning 47 languages, which Pangea-7B is evaluated on.</li>
             </ol>
         </p>
 
