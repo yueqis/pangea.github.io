@@ -187,7 +187,7 @@
 
 
         <p class="text abstract">
-            To this end, Cambrian-1 not only achieves state-of-the-art performance, but also serves as a comprehensive, open cookbook for instruction-tuned MLLMs. See <a href="#State-of-the-art-MLLM-performance">§State-of-the-art MLLM performance</a>. 
+            To this end, Pangea-7B not only achieves state-of-the-art performance, but also serves as a comprehensive, open cookbook for instruction-tuned multilingual multicultural MLLMs. See <a href="#State-of-the-art-MLLM-performance">§State-of-the-art MLLM performance</a>. 
             We provide <a href="https://huggingface.co/nyu-visionx" target="_blank">model weights</a>, 
             <a href="https://github.com/cambrian-mllm/cambrian" target="_blank">code</a>, 
             <a href="https://huggingface.co/nyu-visionx" target="_blank">datasets</a>, 
@@ -198,19 +198,22 @@
 
         <hr>
 
-        <div id='visual_representations' class="vision-block">
+        <div id='Difficulties in Multilingual MLLMs' class="vision-block">
             
-            <div id="sec:benchmarking" class="sub-section">
-                <h1 class="text">Analyzing the Benchmarks</h1>
+            <div id="sec:difficulties" class="sub-section">
+                <h1 class="text">Analyzing the Difficulties</h1>
 
                     <p class="text">
-                        <p class="text">
-                        <strong>Who's answering: LLM or MLLM?:</strong> We compare performance between vision-disabled and vision-enabled settings across MLLMs trained with 23 different vision backbones. Our findings reveal that some benchmarks such as MMMU and AI2D are less reliant on visual inputs, whereas others such as MMVP and MME experience significant performance declines, indicating their effective evaluation of multimodality</li>
-                        </p>
-                        <p class="text">
-                            <strong>Benchmark Clustering and Analysis:</strong> Through correlation analysis and principal component analysis of MLLM performances across various benchmarks, distinct clusters emerge categorized as "General," "Knowledge," "Chart & OCR," and "Vision-Centric." 
-                            We also find that vision-centric benchmarks are underrepresented in the current evaluation landscape.
-                        </p>
+                        <strong>There are four major challenges in training a multilingual MLLM:</strong> 
+                        <br>
+                        <strong>1) Data scarcity:</strong> high-quality multilingual multimodal data is scarce, especially in low-resource languages, which makes it difficult to create large-scale training data <a href="#cite1">[Yu et al., 2022]</a>.
+                        <br>
+                        <strong>2) Cultural nuances:</strong> visual interpretations are context-dependent and vary across cultures <a href="#cite2">[NeurIPS 2023]</a>.
+                        <br>
+                        <strong>3) Catastrophic forgetting:</strong> training on many languages or modalities often results in suboptimal performance on some subsets and requires careful balancing.
+                        <br>
+                        <strong>4) Evaluation complexity:</strong> developing an evaluation suite that accurately measures performance across languages and cultures requires substantial resources and expertise.
+                    </p>
                     <d-figure id="fig-comparison" >
                         <figure>
                             <img data-zoomable="" draggable="false" src="static/img/bench_cat.png" alt="benchmark category">
