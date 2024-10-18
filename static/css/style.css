@@ -7,7 +7,10 @@ body {
     /* background-color: #265073; */
 
     /* background: linear-gradient(127deg, #265073 0%, #596FB7 45%, #C6CF9B 70%, rgb(244,234,203) 100%); */
-    background: linear-gradient(-235deg, #000000 10%, #122153 55%, #FEAE6F 85%, rgb(244,234,203) 100%);
+    /* background: linear-gradient(-235deg, #000000 10%, #122153 55%, #FEAE6F 85%, rgb(244,234,203) 100%); */
+    background-image: url('static/img/icons/pangea_logo.png'); /* Replace with the path to your image */
+    background-size: cover; /* Ensures the image covers the whole background */
+    background-position: center; /* Centers the image */
     
 }
 
