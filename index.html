@@ -99,23 +99,23 @@
                             <span>Code</span>
                         </a>
                         <!-- <br> -->
-                        <a href="https://huggingface.co/collections/nyu-visionx/cambrian-1-models-666fa7116d5420e514b0f23c" class="button" target="_blank">
+                        <a href="https://huggingface.co/neulab/Pangea-7B" class="button" target="_blank">
                             <span class="icon is-small">
                                 <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo" style="height: 1em;">
                             </span>
                             <span>Checkpoints</span>
                         </a>
-                        <a href="https://huggingface.co/collections/nyu-visionx/cambrian-data-6667ce801e179b4fbe774e11" class="button" target="_blank">
+                        <a href="https://huggingface.co/datasets/neulab/PangeaInstruct" class="button" target="_blank">
                             <span class="icon is-small">
                                 <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo" style="height: 1em;">
                             </span>
                             <span>Data</span>
                         </a>                        
-                        <a href="https://huggingface.co/datasets/nyu-visionx/CV-Bench" class="button" target="_blank">
+                        <a href="https://github.com/xiangyue9607/Pangea/tree/main/evaluation" class="button" target="_blank">
                             <span class="icon is-small">
-                                <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo" style="height: 1em;">
+                                <i class="fab fa-github"></i>
                             </span>
-                            <span>CV-Bench</span>
+                            <span>PangeaBench</span>
                         </a>
                     </div>
                 </div>
@@ -388,7 +388,7 @@
         <div id='eval' class="eval-block">
             <h1 class="text">Evaluation</h1>
 
-            <d-figure id="fig:teaser">
+            <d-figure id="fig:teaser" style="text-align: center; width: 80%;">
                 <figure>
                     <img data-zoomable="" draggable="false" src="static/img/teaser.png" alt="teaser">
                     <figcaption>
@@ -996,7 +996,7 @@
                 This demonstrates the necessity of scaling multilingual multimodal instruction tuning. 
             </p>
 
-            <d-figure id="fig:english_ratio">
+            <d-figure id="fig:english_ratio" style="text-align: center; width: 80%;">
                 <figure>
                     <img data-zoomable="" draggable="false" src="static/img/english_vs_multilingual.png" alt="english_vs_multilingual">
                     <figcaption>
@@ -1031,7 +1031,7 @@
         <p class="text">
             <strong>How does the proportion of training samples in a language affect downstream performance?</strong>
             An interesting question to ask is whether the downstream task performance is correlated with the number of training samples. 
-            Our analysis revealed a nuanced relationship between training sample proportion and downstream performance. 
+            Our analysis in <a href="#fig:language_portion_downstream_performance">Figure 7</a> revealed a nuanced relationship between training sample proportion and downstream performance. 
             While there is a general positive correlation, the impact varies significantly across languages and tasks. 
             For widely spoken languages with rich linguistic resources, we observed a near-linear relationship. 
             However, for low-resource languages, even a small increase in proportion yielded disproportionately large performance gains. 
@@ -1039,7 +1039,7 @@
             These findings suggest that strategic allocation of training samples, considering both language prevalence and linguistic similarities, can optimize overall model performance.
         </p>
 
-        <d-figure id="fig:ocr_accuracy" style="text-align: center; width: 50%;">
+        <d-figure id="fig:ocr_accuracy" style="text-align: center; width: 60%;">
             <figure>
                 <img data-zoomable="" draggable="false" src="static/img/ocr_accuracy.png" alt="ocr_accuracy">
                 <figcaption>
