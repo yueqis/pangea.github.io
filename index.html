@@ -254,34 +254,6 @@
                     </figcaption>
                 </figure>
             </div>
-        
-            <div id="sec:inst_tuning" class="sub-section">
-
-            <h1 class="text">Instruction Tuning Recipes </h1>
-                <p class="text">
-                    MLLMs connect pre-trained LLM and vision backbones using a connector such as an MLP projector. Various studies have suggested different optimal training methodologies for MLLMs.
-                </p>
-                <p class="text">
-                    <strong>One Stage vs Two Stage Training</strong> Recent work suggests skipping connector pre-training to reduce compute costs without harming performance. 
-                    We experiment with 0, 0.5M, and 1.2M adapter data. Following LLaVA's method, we initially tune only the connector, then unfreeze both the LLM and connector for instruction tuning with a 737K data mix. <a href="#fig-studyadapter">Figure 3</a> indicates that pre-training the connector boosts performance, and using more adapter data enhances it further, leading us to standardize on a 2-stage training approach with 1.2M adapter data.
-                </p>
-                
-                <p class="text">
-                    <strong>Freeze vs Unfreeze Vision Encoder</strong>
-                    There are also mixed practices in freezing or unfreezing vision backbones during fine-tuning. 
-                    Some argue that unfreezing the vision backbone significantly degrades performance. 
-                    Our experiments demonstrate that, with a reasonable vision model learning rate, 
-                    unfreezing benefits performance across all benchmarks except for a marginal change in Knowledge benchmarks.
-                </p>
-                <d-figure id="fig-studyadapter" >
-                    <figure>
-                        <img data-zoomable="" draggable="false" src="static/img/performance_plot.png" alt="Instruction Tuning Recipes">
-                        <figcaption>
-                            <strong>Figure 3:</strong> MLLMs benefit from pre-training the adapter with more data, and finetuning with unfrozen visual encoder.
-                        </figcaption>
-                    </figure>
-                </d-figure>
-            </div>
         </div>
 
         <div id="instruction_data" class="data-block">
