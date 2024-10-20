@@ -1,0 +1,1368 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Pangea: A Fully Open Multilingual Multimodal LLM for 39 Languages</title>
+        <link rel="icon" type="image/x-icon" href="/static/img/icons/image.png">
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Open Graph -->
+        <meta property="og:url" content="https://neulab.github.io/pangea.github.io/" />
+        <meta property="og:image" content="https://pangea.github.io/static/img/preview.png" />
+        <meta property="og:title" content="Pangea: A Fully Open Multilingual Multimodal LLM for 39 Languages" />
+        <meta property="og:description" content="Pangea is a fully open multilingual multimodal language model supporting 39 languages. It is designed to enable robust natural language and visual understanding across diverse linguistic and cultural contexts." />
+        
+        <!-- Twitter -->
+        <meta name="twitter:url" content="https://pangea.github.io/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://pangea.github.io/static/img/preview.png" />
+        <meta name="twitter:title" content="Pangea: A Fully Open Multilingual Multimodal LLM for 39 Languages" />
+        <meta name="twitter:description" content="Pangea is a multilingual, multimodal LLM that supports a wide range of languages and cultures, bridging gaps in language models through enhanced multimodal learning." />
+       
+        <script src="./static/js/distill_template.v2.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://d3js.org/d3-collection.v1.min.js"></script>
+        <script src="https://rawgit.com/nstrayer/slid3r/master/dist/slid3r.js"></script>
+
+        <script defer="" src="./static/js/hider.js"></script>
+        <script src="./static/js/image_interact.js"></script>
+        <script src="./static/js/switch_videos.js"></script>
+
+        <link rel="stylesheet" href="./static/css/style.css">
+        <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+        <script defer src="./static/js/fontawesome.all.min.js"></script>
+
+
+        <!-- medium zoom https://github.com/francoischalifour/medium-zoom -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>  <!-- jquery -->
+        <script defer src="./static/js/medium-zoom.min.js"></script>
+        <script defer src="./static/js/zoom.js"></script>
+    </head>
+    <body>
+        <div class="header-wrapper">
+            <div class="header-container" id="header-container">
+                <div class="header-content">
+                    <h1 style="margin-top: 0px"><i>Pangea</i></h1>
+                    <h2>A Fully Open <i>Multilingual Multimodal</i><br>
+                        LLM for 39 Languages</h2>
+                        <p>
+                            Introducing Pangea, a 
+                            <em><strong>multilingual multimodal</strong></em>
+                            LLM. Pangea is structured around three key pillars:
+                        </p>
+                    
+                        <div class="icon-container">
+                            <div class="icon-item">
+                                <img src="./static/img/icons/pangea_logo.png" alt="Pangea Icon">
+                                <div><strong>Pangea-7B</strong>: a strong multilingual multimodal LLM capable of 39 languages.</div>
+                            </div>
+                            <div class="icon-item">
+                                <img src="./static/img/icons/data.png" alt="instruction tuning data Icon">
+                                <div><strong>PangeaIns</strong>: a 6M multilingual multimodal instruction tuning dataset spanning 39 languages.</div>
+                            </div>
+                            <div class="icon-item">
+                                <img src="./static/img/icons/eval.png" alt="Benchmarking Icon">
+                                <div><strong>PangeaBench</strong>: a holistic evaluation benchmark spanning 14 datasets in 47 languages.</div>
+                            </div>
+                        </div>
+
+                    <div class="button-container">
+                        <!-- replace arxiv -->
+                        <a href="https://arxiv.org/abs/2406.16860" class="button paper-link" target="_blank">
+                            <span class="icon is-small">
+                                <i class="ai ai-arxiv"></i>
+                            </span>
+                            arXiv
+                        </a>
+                        <!-- replace pdf -->
+                        <a href="https://arxiv.org/pdf/2406.16860" class="button paper-link" target="_blank">
+                            <span class="icon is-small">
+                                <i class="fas fa-file-pdf"></i>
+                            </span>
+                            <span>pdf</span>
+                        </a>
+                        <!-- replace image -->
+                        <a href="https://github.com/xiangyue9607/Pangea" class="button" target="_blank">
+                            <span class="icon is-small">
+                                <i class="fab fa-github"></i>
+                            </span>
+                            <span>Code</span>
+                        </a>
+                        <!-- <br> -->
+                        <a href="https://huggingface.co/collections/nyu-visionx/cambrian-1-models-666fa7116d5420e514b0f23c" class="button" target="_blank">
+                            <span class="icon is-small">
+                                <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo" style="height: 1em;">
+                            </span>
+                            <span>Checkpoints</span>
+                        </a>
+                        <a href="https://huggingface.co/collections/nyu-visionx/cambrian-data-6667ce801e179b4fbe774e11" class="button" target="_blank">
+                            <span class="icon is-small">
+                                <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo" style="height: 1em;">
+                            </span>
+                            <span>Data</span>
+                        </a>                        
+                        <a href="https://huggingface.co/datasets/nyu-visionx/CV-Bench" class="button" target="_blank">
+                            <span class="icon is-small">
+                                <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo" style="height: 1em;">
+                            </span>
+                            <span>CV-Bench</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-image">
+                    <img draggable="false" src="static/img/icons/image.png" alt="Teaser Image" class="teaser-image">
+                </div>
+            </div>
+        </div>
+    <d-article>
+        <div class="byline">
+            <div class="byline-container">
+                <p>
+                    <a href="https://xiangyue9607.github.io/" class="author-link" target="_blank">Xiang Yue<sup>*</sup></a> &emsp;
+                    <a href="https://yueqis.github.io/" class="author-link" target="_blank">Yueqi Song<sup>*</sup></a> &emsp;
+                    <a href="https://akariasai.github.io/" class="author-link" target="_blank">Akari Asai</a> &emsp;
+                    <a href="https://seungonekim.github.io/" class="author-link" target="_blank">Seungone Kim</a> &emsp;
+                    <a href="https://nyandwi.com/" class="author-link" target="_blank">Jean de Dieu Nyandwi</a> &emsp;
+                    <a href="https://simran-khanuja.github.io/" class="author-link" target="_blank">Simran Khanuja</a> &emsp;
+                    <a href="https://www.anjaliruban.com/" class="author-link" target="_blank">Anjali Kantharuban</a> &emsp;
+                    <a href="https://scholar.google.com/citations?user=pVgdC6wAAAAJ&hl=en" class="author-link" target="_blank">Lintang Sutawika</a> &emsp;
+                    <a href="https://scholar.google.com/citations?user=jfc-2twAAAAJ&hl=en" class="author-link" target="_blank">Sathyanarayanan Ramamoorthy</a> &emsp;
+                    <a href="https://www.phontron.com/" class="author-link" target="_blank">Graham Neubig<sup>&dagger;</sup></a>
+                    <p></p>
+                    <a href="https://www.cs.cmu.edu/" class="affiliation-link" id="affiliation" target="_blank">Carnegie Mellon University</a>
+                </p>
+            </div>
+        </div>
+        <p style="text-align: center;">
+            <span class="author-note"><sup>*</sup>Project lead</span>&emsp;
+            <span class="author-note"><sup>&dagger;</sup>Corresponding author</span>
+        </p>
+        
+
+        
+        <p class="text abstract">
+
+            We introduce Pangea-7B, a fully open multilingual multimodal language model (MLLM) designed to bridge multilingual and multicultural gaps in visual understanding tasks. 
+            Pangea-7B is trained on PangeaIns, a diverse 6M instruction dataset spanning 39 languages.
+            Pangea-7B is evaluated on PangeaBench, a holistic evaluation suite encompassing 14 datasets covering 47 languages.
+            Pangea-7B demonstrates state-of-the-art results, outperforming existing open models in multilingual and culturally diverse contexts.
+            <br><br>
+            Pangea is structured around three key aspects, each offering important insights into the design space of MLLMs:
+            <ol class="text">
+                <li><strong><a href="#model">&sect;Pangea-7B</a></strong>: a strong multilingual multimodal LLM capable of 39 languages.</li>
+                <li><strong><a href="#instruction_data">&sect;Instruction Tuning Data</a></strong>: We construct a instruction tuning dataset PangeaIns, a diverse dataset with 6 million multilingual multimodal instruction tuning data spanning 39 languages, which Pangea-7B is trained on.</li>
+                <li><strong><a href="#sec:benchmarking">&sect;Benchmarking</a></strong>: We construct a multilingual multimodal evaluation benchmark PangeaBench, including 14 datasets spanning 47 languages, which Pangea-7B is evaluated on.</li>
+            </ol>
+        </p>
+
+        <div class="icon-row">
+            <a href="#Pangea-7B" class="icon-link">
+                <img src="static/img/icons/pangea_logo.png" alt="Pangea Logo" class="icon">
+                Modeling<br>Pangea-7B
+            </a>
+            <a href="#instruction_data" class="icon-link">
+                <img src="static/img/icons/data.png" alt="Data Logo" class="icon">
+                Instruction Data<br>PangeaIns
+            </a>
+            <a href="#benchmarking" class="icon-link">
+                <img src="static/img/icons/eval.png" alt="Eval Logo" class="icon">
+                Benchmarking<br>PangeaBench
+            </a>
+        </div>
+
+        <p class="click-hint" style="width: 85%;">
+            <img src="static/img/icons/click.gif" style="width: 1.5rem">
+            <strong>Click to jump to each section.</strong>
+        </p>
+
+
+        <p class="text abstract">
+            To this end, Pangea-7B not only achieves state-of-the-art performance, but also serves as a comprehensive, open cookbook for instruction-tuned multilingual multicultural MLLMs. See <a href="#State-of-the-art-MLLM-performance">§State-of-the-art MLLM performance</a>. 
+            We provide <a href="https://huggingface.co/nyu-visionx" target="_blank">model weights</a>, 
+            <a href="https://github.com/cambrian-mllm/cambrian" target="_blank">code</a>, 
+            <a href="https://huggingface.co/nyu-visionx" target="_blank">datasets</a>, 
+            and detailed instruction-tuning and evaluation recipes. We hope our release will inspire and accelerate advancements in multimodal systems and visual representation learning.
+        </p>
+        
+        <hr>
+
+        <div id='Difficulties in Multilingual MLLMs' class="vision-block">
+
+            <div id="sec:difficulties" class="sub-section">
+                <h1 class="text">Analyzing the Difficulties</h1>
+                <p class="text">
+                    There are four major challenges in training a multilingual MLLM:
+                </p>
+                <p class="text">
+                    <strong>1) Data scarcity:</strong> High-quality multilingual multimodal data is scarce, especially in low-resource languages, which makes it difficult to create large-scale training data. 
+                    <d-cite key="yu-etal-2022-beyond"></d-cite>
+                </p>
+                <p class="text">
+                    <strong>2) Cultural nuances:</strong> Visual interpretations are context-dependent and vary across cultures. 
+                    <d-cite key="NEURIPS2023_d08b6801"></d-cite>
+                </p>
+                <p class="text">
+                    <strong>3) Catastrophic forgetting:</strong> Training on many languages or modalities often results in suboptimal performance on some subsets and requires careful balancing.
+                </p>
+                <p class="text">
+                    <strong>4) Evaluation complexity:</strong> Developing an evaluation suite that accurately measures performance across languages and cultures requires substantial resources and expertise.
+                </p>
+            </div>
+        
+            <div id="Addressing Challenges with Pangea" class="sub-section">
+                <h1 class="text">Addressing Challenges with Pangea</h1>
+                <p class="text">
+                    To address these challenges, we introduce Pangea, an open-sourced multilingual MLLM designed to bridge linguistic and cultural gaps in visual understanding tasks.
+                </p>
+                <p class="text">
+                    <strong>1) 6M multilingual instruction tuning data:</strong> Pangea is trained on PangeaIns, a high-quality multilingual multimodal instruction tuning dataset comprising 6 million samples in 39 typologically diverse languages, addressing data scarcity. PangeaIns combines existing open-source resources with newly created instructions focused on multicultural understanding. We curate high-quality English instructions, carefully translate them, and adapt them for multilingual contexts.
+                </p>
+                <p class="text">
+                    <strong>2) Multicultural instruction generation pipeline:</strong> To address Western-centric biases in visual representations, we source images from LAION-Multi 
+                    <d-cite key="schuhmann2022laion"></d-cite>, which includes images from various countries and captions in multiple languages. However, LAION-Multi contains many images that are not culturally representative of the country's speaking population. Additionally, the associated alt text is often short, noisy, and lacks sufficient detail. To combat these issues, we develop a multicultural multilingual multimodal instruction generation pipeline. This pipeline leverages an LLM 
+                    <d-cite key="dubey2024llama"></d-cite> to score and filter images based on cultural informativeness. We then enhance the remaining data by generating detailed descriptions and creating complex instructions that combine culturally relevant tasks with general multilingual scenarios. This approach improves the model's cultural understanding while maintaining robust multilingual performance.
+                </p>
+                <p class="text">
+                    <strong>3) Balanced data distribution:</strong> PangeaIns features an extensive and balanced distribution of languages, tasks, and cultural contexts (as shown in 
+                    <a href="#fig:train_data_distribution">Figure 1</a>).
+                </p>
+                <p class="text">
+                    <strong>4) PangeaBench:</strong> To evaluate Pangea-7B capabilities, we present PangeaBench, a comprehensive multilingual and multimodal evaluation suite comprising five multimodal and three text-based tasks across 14 datasets in 47 languages. PangeaBench assesses MLLMs' performance on open-domain multimodal chat, image captioning, cultural understanding, multimodal reasoning, and text-only tasks including question answering and complex math reasoning.
+                </p>
+        
+                <figure id="fig:train_data_distribution">
+                    <img data-zoomable="" draggable="false" src="static/img/dataset_task_distribution.png" alt="train data distribution">
+                    <figcaption>
+                        <strong>Figure 1:</strong> Statistics of our PangeaIns, which comprises 6M multimodal instructions in 39 languages. PangeaIns includes general instructions, document and chart question answering, captioning, domain-specific, culturally relevant, and text-only instructions.
+                    </figcaption>
+                </figure>
+        
+                <figure id="fig-cvcb">
+                    <img data-zoomable="" draggable="false" src="static/img/cvcb.jpg" alt="benchmark category">
+                    <figcaption>
+                        <strong>Figure 2:</strong> Example questions in CV-Bench that focuses on 2D and 3D visual understanding.
+                    </figcaption>
+                </figure>
+            </div>
+        
+            <div id="sec:inst_tuning" class="sub-section">
+
+            <h1 class="text">Instruction Tuning Recipes </h1>
+                <p class="text">
+                    MLLMs connect pre-trained LLM and vision backbones using a connector such as an MLP projector. Various studies have suggested different optimal training methodologies for MLLMs.
+                </p>
+                <p class="text">
+                    <strong>One Stage vs Two Stage Training</strong> Recent work suggests skipping connector pre-training to reduce compute costs without harming performance. 
+                    We experiment with 0, 0.5M, and 1.2M adapter data. Following LLaVA's method, we initially tune only the connector, then unfreeze both the LLM and connector for instruction tuning with a 737K data mix. <a href="#fig-studyadapter">Figure 3</a> indicates that pre-training the connector boosts performance, and using more adapter data enhances it further, leading us to standardize on a 2-stage training approach with 1.2M adapter data.
+                </p>
+                
+                <p class="text">
+                    <strong>Freeze vs Unfreeze Vision Encoder</strong>
+                    There are also mixed practices in freezing or unfreezing vision backbones during fine-tuning. 
+                    Some argue that unfreezing the vision backbone significantly degrades performance. 
+                    Our experiments demonstrate that, with a reasonable vision model learning rate, 
+                    unfreezing benefits performance across all benchmarks except for a marginal change in Knowledge benchmarks.
+                </p>
+                <d-figure id="fig-studyadapter" >
+                    <figure>
+                        <img data-zoomable="" draggable="false" src="static/img/performance_plot.png" alt="Instruction Tuning Recipes">
+                        <figcaption>
+                            <strong>Figure 3:</strong> MLLMs benefit from pre-training the adapter with more data, and finetuning with unfrozen visual encoder.
+                        </figcaption>
+                    </figure>
+                </d-figure>
+            </div>
+            <div id='visual-representation' class="viusal-representation-block">
+            <h1 class="text">MLLMs as a Vision Model Evaluator </h1>
+                
+                <p class="text">
+                    MLLMs provide a more real-world evaluation of visual representations than traditional benchmarks like ImageNet-1k. We use 2-stage instruction tuning with 1.2M adapter data and 737K fine-tuning data to compare a variety of vision models on downstream MLLM performance.
+                    Our evaluations show language-supervised models exhibit strong advantages across all benchmark categories, especially in OCR & chart tasks. However, despite the smaller dataset size of SSL models like DINOv2, they perform competitively in vision-centric benchmarks. 
+                </p>
+
+                
+                <d-figure id="fig-mllm_as_interface">
+                    <figure class="responsive-content">
+                        <iframe src="static/img/tuning_recipes_plot.html"></iframe>
+                        <img data-zoomable="" draggable="false" src="static/img/mllm_interface_shared.png" alt="MLLMs as an interface to evaluate visual representations">
+                        <figcaption>
+                            <strong>Figure 4:</strong> MLLMs as an interface to evaluate visual representations.
+                        </figcaption>
+                    </figure>
+                    <p class="click-hint" style="width: 85%; margin-top: -2em;" id="mllm_interface_click_hint">
+                        <img src="static/img/icons/click.gif" style="width: 1.5rem">
+                        <strong>Hover & click to interact.</strong>
+                    </p>                
+                </d-figure>
+                <p class="text">
+                    <strong>Narrowing the gap between CLIP and SSL models</strong> 
+                    Above, we observe that DINOv2 stands midway between SSL models and CLIP models on general VQA and knowledge VQA tasks, 
+                    even outperforming some CLIP models on vision-centric benchmarks with higher resolution. 
+                    We investigate unfreezing the vision backbones and increasing the amount of visual fine-tuning data to narrow this gap. 
+                    In <a href="#fig-narrowgap">Figure 5</a>, we observe that by unfreezing the vision backbone, 
+                    the DINOv2-based MLLM fine-tuned with 5M data surpasses the MLLM trained with a CLIP model on 0.7M data. 
+                    Additionally, the gap between DINOv2 and the CLIP models is reduced under the 5M data experiment setting.
+                </p>
+                <d-figure id="fig-narrowgap">
+                    <figure>
+                        <img data-zoomable="" draggable="false" src="static/img/narrow_gap.png" alt="Narrowing the gap between CLIP and SSL models">
+                        <figcaption>
+                            <strong>Figure 5:</strong> By unfreezing the visual backbone and fine-tuning on 5M examples, the gap between CLIP and DINOv2 can be narrowed.
+                        </figcaption>
+                    </figure>
+                </d-figure>
+            
+                <p class="text">
+                    <strong>Combining Multiple Vision Encoders </strong>
+                    As observed in <a href="#fig-mllm_as_interface">Figure 4</a>, different vision models excel in different aspects of MLLM performance. 
+                    We explore the potential of combining multiple vision encoders to leverage their distinctive representations.
+                    Given that different vision encoders use varying architectures and image resolutions, we interpolate the output visual tokens to a fixed number, 576.
+                    The results are tabulated in <a href="#tab:model_ensemble">Table 2</a>, where we observe consistent performance improvements with the addition of more models.
+                </p>
+
+                <div id="tab:model_ensemble" style="display: flex; flex-direction: column; align-items: center;">
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                            <tr>
+                                <th colspan="1" class="tb-hdr">Vision Backbone</th>
+                                <th colspan="1" class="tb-hdr"></th>
+                                <th colspan="4" class="tb-hdr">General</th>
+                                <th colspan="4" class="tb-hdr">Knowledge</th>
+                                <th colspan="4" class="tb-hdr">OCR & Chart</th>
+                                <th colspan="4" class="tb-hdr">Vision-Centric</th>
+                            </tr>
+                            <tr>
+                                <th class="section-border">Encoders</th>
+                                <th class="section-border"><b>Average</b></th>
+                                <th>MME<sup>P</sup></th>
+                                <th>MMB</th>
+                                <th>SEED<sup>I</sup></th>
+                                <th class="section-border">GQA</th>
+                                <th>SQA<sup>I</sup></th>
+                                <th>MMMU<sup>V</sup></th>
+                                <th>MathVista<sup>M</sup></th>
+                                <th class="section-border">AI2D</th>
+                                <th>ChartQA</th>
+                                <th>OCRBench</th>
+                                <th>TextVQA</th>
+                                <th class="section-border">DocVQA</th>
+                                <th>MMVP</th>
+                                <th>RealWorldQA</th>
+                                <th>CV-Bench<sup>2D</sup></th>
+                                <th>CV-Bench<sup>3D</sup></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="section-border">SigLIP+DINOv2</td>
+                                <td class="section-border">51.61</td>
+                                <td>1,432.02</td>
+                                <td>61.28</td>
+                                <td>65.99</td>
+                                <td class="section-border">63.30</td>
+                                <td>68.82</td>
+                                <td>35.69</td>
+                                <td>29.40</td>
+                                <td class="section-border">60.01</td>
+                                <td>43.00</td>
+                                <td>35.70</td>
+                                <td>60.40</td>
+                                <td class="section-border">37.54</td>
+                                <td>30.00</td>
+                                <td>53.99</td>
+                                <td>55.52</td>
+                                <td>53.58</td>
+                            </tr>
+                            <tr>
+                                <td class="section-border">SigLIP+DINOv2+ConvNext</td>
+                                <td class="section-border">54.52</td>
+                                <td>1,503.51</td>
+                                <td>63.83</td>
+                                <td>67.97</td>
+                                <td class="section-border">63.95</td>
+                                <td>70.40</td>
+                                <td class="highlight">35.99</td>
+                                <td>29.30</td>
+                                <td class="section-border">60.69</td>
+                                <td>48.20</td>
+                                <td>36.90</td>
+                                <td>64.97</td>
+                                <td class="section-border">45.53</td>
+                                <td class="highlight">34.67</td>
+                                <td>58.69</td>
+                                <td>55.74</td>
+                                <td>60.33</td>
+                            </tr>
+                            <tr>
+                                <td class="section-border">SigLIP+DINOv2+ConvNext+CLIP</td>
+                                <td class="section-border highlight">54.74</td>
+                                <td>1,479.46</td>
+                                <td>63.32</td>
+                                <td>67.63</td>
+                                <td class="section-border highlight">64.04</td>
+                                <td class="highlight">71.39</td>
+                                <td>35.49</td>
+                                <td>29.10</td>
+                                <td class="section-border">59.88</td>
+                                <td>50.24</td>
+                                <td class="highlight">39.60</td>
+                                <td>64.55</td>
+                                <td class="section-border">46.12</td>
+                                <td>32.67</td>
+                                <td class="highlight">58.95</td>
+                                <td>58.54</td>
+                                <td class="highlight">60.42</td>
+                            </tr>
+                            <tr>
+                                <td class="section-border">SigLIP+ConvNext</td>
+                                <td class="section-border">54.53</td>
+                                <td>1,494.97</td>
+                                <td class="highlight">64.60</td>
+                                <td>67.98</td>
+                                <td class="section-border">63.58</td>
+                                <td>71.05</td>
+                                <td>34.90</td>
+                                <td>29.80</td>
+                                <td class="section-border">60.85</td>
+                                <td>50.64</td>
+                                <td>38.00</td>
+                                <td>64.53</td>
+                                <td class="section-border">46.52</td>
+                                <td>32.00</td>
+                                <td>57.91</td>
+                                <td class="highlight">58.83</td>
+                                <td>56.58</td>
+                            </tr>
+                            <tr>
+                                <td class="section-border">CLIP+ConvNext</td>
+                                <td class="section-border">54.45</td>
+                                <td class="highlight">1,511.08</td>
+                                <td>63.83</td>
+                                <td>67.41</td>
+                                <td class="section-border">63.63</td>
+                                <td>70.80</td>
+                                <td>35.09</td>
+                                <td>30.40</td>
+                                <td class="section-border">59.91</td>
+                                <td>51.32</td>
+                                <td>35.00</td>
+                                <td>64.45</td>
+                                <td class="section-border">47.88</td>
+                                <td>33.33</td>
+                                <td>57.25</td>
+                                <td>56.32</td>
+                                <td>59.08</td>
+                            </tr>
+                            <tr>
+                                <td class="section-border">SigLIP+DINOv2+ConvNext</td>
+                                <td class="section-border">53.78</td>
+                                <td>1,450.64</td>
+                                <td>63.57</td>
+                                <td>67.79</td>
+                                <td class="section-border">63.63</td>
+                                <td>71.34</td>
+                                <td>34.80</td>
+                                <td>30.20</td>
+                                <td class="section-border highlight">61.04</td>
+                                <td>49.32</td>
+                                <td>37.70</td>
+                                <td>64.05</td>
+                                <td class="section-border">45.83</td>
+                                <td>30.00</td>
+                                <td>56.21</td>
+                                <td>58.08</td>
+                                <td>54.33</td>
+                            </tr>
+                            <tr>
+                                <td class="section-border">SigLIP+CLIP+ConvNext</td>
+                                <td class="section-border">54.53</td>
+                                <td>1,507.28</td>
+                                <td>63.23</td>
+                                <td class="highlight">68.64</td>
+                                <td class="section-border">63.63</td>
+                                <td>71.10</td>
+                                <td>35.89</td>
+                                <td class="highlight">30.90</td>
+                                <td class="section-border">59.97</td>
+                                <td class="highlight">52.36</td>
+                                <td>38.50</td>
+                                <td class="highlight">65.40</td>
+                                <td class="section-border highlight">47.92</td>
+                                <td>28.67</td>
+                                <td>57.25</td>
+                                <td>57.66</td>
+                                <td>55.92</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <figcaption style="text-align: center; width: 140%;">
+                        Table 2: All Benchmark Results for Model Ensemble with 1.2M Adapter Data + 737K
+                        Instruction Tuning Data
+                    </figcaption>
+                </div>
+            
+                <p class="text">
+                    However, this strategy has two limitations:
+                    1) it employs interpolation, which can potentially lead to information loss, especially on vision encoders with high-resolution feature maps, and 
+                    2) it treats each model equally by simple concatenation. 
+                    Therefore, we seek a more effective strategy that fully leverages model combinations with less information loss and more flexibility.
+                </p>
+
+        </div>
+        </div>
+
+        <div id="instruction_data" class="data-block">
+            <h1 class="text">PangeaIns</h1>
+            <p class="text">
+                Creating a truly multilingual, multicultural MLLM presents unique challenges. 
+                We developed PangeaIns, a diverse and high-quality dataset specifically designed for instruction tuning. 
+                PangeaIns features an extensive and balanced distribution of languages, tasks, and cultural contexts. 
+                Comprising 6 million samples in 39 languages, PangeaIns was curated with a focus on linguistic and cultural diversity. 
+                We empirically keep the final language ratio of English to Multilingual as 40%:60% as we found a significant portion of English data plays an important role in cross-lingual transfer. This is discussed in more details in (see <a href="#discussion">Discussion</a>).
+                <a href="#fig:train_data_distribution">Figure 1</a> shows the details of our PangeaIns's distribution. 
+                We implemented three key strategies to ensure comprehensive coverage, each addressing the specific hurdles encountered in multilingual multimodal learning. 
+            </p>
+    
+            <div class="subsection">
+                <h3 class="text">Machine Translated Instructions</h3>
+                <p class="text" id="machine_translation">
+                    We first create a high-quality set of English multimodal instructions, which serve as the foundation for translation into other languages.
+                    <a href="#fig:train_data_distribution">Figure 1</a> shows the statistics of our translated datasets.
+                    Then, we use the proprietary model Gemini 1.5 Pro <d-cite key="deepmind_gemini_report"></d-cite> to translate the English instructions into 17 languages.
+                    Lastly, we developed a post-processing pipeline. This pipeline automatically corrected these errors or directly dropped the examples, ensuring that all translated instructions remained consistent.
+                </p>
+            </div>
+            <div class="subsection">
+                <h3 class="text">Multicultural Understanding Instructions</h3>
+                <p class="text">
+                    While machine translation enables us to scale across multiple languages, data translated from English is still Anglo-centric in its coverage of cultural <d-cite key="yu-etal-2022-beyond"></d-cite>.
+                    To address this, we developed a pipeline focused on creating instructions for multicultural understanding. 
+                    The pipeline of creating multicultural understanding instructions is shown in <a href="#fig:cultural_understanding_pipeline">Figure 2</a>.
+                </p>
+                <d-figure id="fig:cultural_understanding_pipeline">
+                    <figure>
+                        <img data-zoomable="" draggable="false" src="static/img/cultural_data_gen_pipeline.png" alt="Overview of multicultural understanding instructions data generation pipeline.">
+                        <figcaption>
+                            <strong>Figure 2:</strong> Overview of multicultural understanding instructions data generation pipeline.
+                        </figcaption>
+                    </figure>
+                </d-figure>
+    
+                <p class="text">
+                    <strong>Curation of Culturally Diverse Images.</strong> 
+                    We began by sampling 10 million images from the LAION-Multi dataset <d-cite key="schuhmann2022laion"></d-cite>.
+                    1) Heuristic Filtering: We implemented automatic filtering based on several key criteria: Image Size, Aspect Ratio, Text Length, NSFW content, Offensive Text, Deduplication, and CLIP Score (used to assess the alignment between the image and its textual description). This helped remove low-quality or inappropriate images and ensured the remaining dataset adhered to quality standards.
+                    2) LLM Scoring: we employed Llama-3.1-8B-Instruct <d-cite key="dubey2024llama"></d-cite> to evaluate the relevance and quality of the accompanying text descriptions (alt text) for each image. The following tasks are evaluated by the model: text quality, subject classificationt, country/region classification (images classified as `no specific country` were excluded).
+                    3) Avoiding Overrepresentation: We downsampled images from frequently occurring subjects.
+                    Ultimately, we curated a final set of 1 million high-quality, culturally specific images that form the foundation of our dataset.
+                </p>
+                
+                <p class="text">
+                    <strong>Captioning of Multicultural Images with Different Languages.</strong> 
+                    To provide context and enhance the models' ability to interpret the images accurately, we regenerated a more detailed caption using Gemini 1.5 Pro based on high-quality original text. Each image was accompanied by a caption written in the language corresponding to its cultural origin.
+                </p>
+
+                <p class="text">
+                    <strong>Generating Multilingual and Cross-Cultural Instructions.</strong> 
+                    For each image, we used Gemini 1.5 Pro to generate captions in native languages, leveraging high-quality alt text to enrich context. 
+                    This alt text provided crucial cultural and contextual information, such as identifying key figures or locations. We carefully engineered prompts to create multilingual instructions based on 13 task types like Information Seeking and Cultural Interpretation. 
+                    Each image had up to two QA pairs, ensuring diverse interactions. This approach enabled the model to better capture visual, cultural, and contextual nuances and respond effectively across various linguistic contexts.
+                </p>
+
+            </div>
+
+            <div class="subsection">
+                <h3 class="text">Curating Existing Multilingual Instructions</h3>
+                <p class="text">
+                    To further enrich PangeaIns, we conducted an extensive survey of the available multilingual multimodal literature and datasets, including those hosted on HuggingFace. As a result, we incorporated several high-quality, open-source datasets into our PangeaIns mixture. These include Chinese ALLaVA-4V <d-cite key="chen2024allava"></d-cite>, Viet Document and OCR QA <d-cite key="doan2024vintern"></d-cite>, Llava Chinese <d-cite key="ChineseLLaVA"></d-cite>, Llava Medical Chinese Instruction <d-cite key="ChineseLLaVA_Med"></d-cite>, LLaVA-Japanese-Instruct <d-cite key="LLaVA_JP_Instruct_108K"></d-cite>, MTVQA <d-cite key="tang2024mtvqa"></d-cite>, Japanese STAIR Captions <d-cite key="yoshikawa2017stair"></d-cite>, Russian GQA <d-cite key="deepvk2024gqa_ru"></d-cite>, French Doc-VQA <d-cite key="SoSoDocvqa"></d-cite>, and French Table-VQA <d-cite key="AgDeTQA"></d-cite>. Each of these datasets brings unique linguistic and cultural perspectives to the mix, covering a wide range of languages and task types. 
+                </p>
+            </div>
+        </div>
+
+        <div id='model' class="model-block">
+            <h1 class="text">Pangea-7B</h1>
+            <p class="text">
+                We train Pangea-7B on PangeaIns, our multilingual multimodal dataset comprising 6 million samples across 39 languages. The model is based on LLaVA-Next architecture <d-cite key="liu2024llavanext"></d-cite> with Qwen2-7B-Instruct <d-cite key="yang2024qwen2"> as the language model backbone. We employ a learning rate of 2e-5, a batch size of 512, coupled with a cosine decay schedule with 0.03 warmup steps. We train the model for 1 epoch.
+            </p>
+        </div>
+
+        <div id='benchmarking' class="benchmark-block">
+            <h1 class="text">PangeaBench: Evaluation of Multilingual Multimodal Models</h1>
+            <p class="text">
+                To assess the capabilities of Pangea-7B across a variety of languages, cultures, and task types, we have developed PangeaBench, a comprehensive multilingual and multimodal evaluation suite.
+                The overview and examples of PangeaBench from each task are shown in <a href="#fig:eval_data">Figure 3</a>.
+            </p>
+            <div class="subsection">
+                <h3 class="text">Multimodal Tasks</h3>
+                
+                <p class="text">
+                    <strong>Multimodal Chat</strong>:
+                    The Multimodal Chat task evaluates a model's ability to engage in dynamic conversations using both text and images. 
+                    Multilingual LlavaBench <d-cite key="yu-etal-2022-beyond"></d-cite> stands as the only benchmark for assessing multilingual long-form generation in MLLMs, using coarse-grained evaluation criteria focused on helpfulness, relevance, and accuracy. 
+                    However, research shows that these criteria may not align well with human judgment <d-cite key="ye2023flask"></d-cite> <d-cite key="kim2023prometheus"></d-cite> <d-cite key="lee2024prometheusvision"></d-cite> <d-cite key="kim2024biggen"></d-cite> <d-cite key="kim2024prometheus"></d-cite>. 
+                    To improve assessment, we developed a new benchmark called xChatBench, featuring fine-grained evaluation criteria across diverse scenarios. 
+                    It addresses a common issue where English-centric models respond in English regardless of the query language. This behavior is penalized in xChatBench, receiving a score of zero to emphasize the importance of multilingual accuracy and effective communication. 
+                    This strict criterion is essential for enhancing user experience in multilingual contexts.
+                </p>
+                <p class="text">
+                    <strong>Captioning</strong>:
+                    The XM100 dataset was created to evaluate models in multilingual image captioning, consisting of images paired with captions in 36 languages <d-cite key="thapliyal2022crossmodal"></d-cite>. 
+                    To improve the dataset's diversity and streamline the evaluation, images were clustered based on their captions, and 100 representative images were manually selected from these clusters. 
+                    This method reduces redundancy and ensures a broader range of images and captions, making XM100 an effective benchmark for assessing multilingual captioning capabilities.
+                </p>
+                <p class="text">
+                    <strong>Multilingual VQA</strong>:
+                    This task evaluates a model's ability to answer questions about images in multiple languages. 
+                    The xGQA <d-cite key="pfeiffer2022xgqa"></d-cite> and MaXM <d-cite key="changpinyo2022maxm"></d-cite> datasets offer a wide variety of visual question-answering challenges across different languages and scripts, focusing on cross-lingual visual understanding. 
+                    These datasets provide a comprehensive benchmark to assess the model's proficiency in handling diverse linguistic and visual contexts.
+                </p>
+                <p class="text">
+                    <strong>Multi-Subject Reasoning</strong>:
+                    The xMMMU and M3Exam <d-cite key="zhang2023m3exam"></d-cite> datasets assess a model's reasoning abilities across various academic subjects. 
+                    xMMMU is a machine-translated version of MMMU <d-cite key="yue2024mmmu"></d-cite> validation questions, focusing on multimodal reasoning in multiple subjects. 
+                    It includes 300 questions translated into six languages using GPT-4. 
+                    M3Exam presents complex, real-world educational questions that require both textual and visual understanding. 
+                    These datasets provide a comprehensive benchmark for evaluating models' academic and multimodal reasoning skills. 
+                    Further details on the translation quality of xMMMU and descriptions of other datasets are available in the evaluation section.
+                </p>
+            </div>
+
+            <d-figure id="fig:eval_data">
+                <figure>
+                    <img data-zoomable="" draggable="false" src="static/img/xmm_eval_example.png" alt="eval data">
+                    <figcaption>
+                        <strong>Figure 3:</strong> Overview of PangeaBench, which contains 5 multimodal and 3 text tasks covering 14 datasets (including two newly curated xChatBench and xMMMU datasets). The table provides details about the datasets, while the figure shows evaluation examples from five different multimodal eval tasks in our PangeaBench.
+                    </figcaption>
+                </figure>
+            </d-figure>
+
+            <div class="subsection">
+                <h3 class="text">Text-Only Multilingual Datasets</h3>
+                <p class="text">
+                    While multimodal tasks are critical for evaluating the holistic capabilities of models like PangeaBench, text-only multilingual tasks provide an equally essential dimension to assess.
+                    We include three tasks QA, Translation, and Reasoning covering five datasets for the text-only evaluations in PangeaBench.
+                    Specifically, we include TydiQA <d-cite key="clark2020tydi"></d-cite> to test the model's ability to answer questions across 11 typologically diverse languages. We adopt the FLORES <d-cite key="nllb2024scaling"></d-cite> dataset to assess machine translation performance across multiple languages. 
+                    We sample 11 languages (denoted as FLORES-Sub). We use MMMLU <d-cite key="MMMLU"></d-cite>, a human-translated version of MMLU to test the general language understanding of models. 
+                    We use XStoryCloze <d-cite key="lin2022fewshotlearningmultilinguallanguage"></d-cite> and MGSM <d-cite key="shi2022mgsm"></d-cite> to test the model's commonsense and mathematical reasoning ability in multilingual contexts respectively. 
+                </p>
+            </div>
+
+        </div>
+
+        <div id='eval' class="eval-block">
+            <h1 class="text">Evaluation</h1>
+
+            <d-figure id="fig:teaser">
+                <figure>
+                    <img data-zoomable="" draggable="false" src="static/img/teaser.png" alt="teaser">
+                    <figcaption>
+                        <strong>Figure 4:</strong> Overview of the aggregate performance of various multimodal LLMs on PangeaBench. Our Pangea-7B demonstrates comparable performance to SoTA open-source models in English settings, while significantly outperforming them in multilingual scenarios.
+                    </figcaption>
+                </figure>
+            </d-figure>
+            
+            <p class="text">
+                For evaluation, we compare Pangea-7B against several state-of-the-art open source baselines, including English-centric models Llava-1.5-7B <d-cite key="liu2023improvedllava"></d-cite>, Llava-Next-7B <d-cite key="liu2024llavanext"></d-cite>, Phi-3.5-Vision <d-cite key="abdin2024phi3technicalreporthighly"></d-cite>, Cambrian-8B <d-cite key="tong2024cambrian"></d-cite> and multilingual models PaliGemma-3B <d-cite key="beyer2024paligemma"></d-cite>, PALO-7B <d-cite key="PALO"></d-cite>, mBLIP mT0-XL and mBLIP BLOOMZ <d-cite key="geigle_etal_2024_mblip"></d-cite>. 
+                We also consider two text-only LLMs baselines Vicuna-1.5-7B <d-cite key="zheng2023judging"></d-cite> and Qwen2-7B-Instruct <d-cite key="yang2024qwen2"></d-cite>, which are the backbones of Llava-Next and our Pangea-7B respectively. 
+                We integrate our multimodal tasks in PangeaBench into <a href="https://github.com/EvolvingLMMs-Lab/lmms-eval" target="_blank">lmms-eval</a> <d-cite key="lmms_eval2024"></d-cite>, a multimodal evaluation package that supports many English multimodal benchmarks. 
+                We use <a href="https://github.com/EleutherAI/lm-evaluation-harness" target="_blank">lm-evaluation-harness</a> <d-cite key="biderman2024lessons"></d-cite> to evaluate text-only tasks. 
+                We follow the original paper for their best models' prompts in different tasks.
+                <a href="#fig:teaser">Figure 4</a> shows the aggregate performance of various multimodal LLMs on PangeaBench.
+            </p>
+
+            <div id="tab:final_table" style="display: flex; flex-direction: column; align-items: center;" class="figure">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">Models</th>
+                                <th colspan="2">AVG (all)</th>
+                                <th colspan="4">Multimodal Chat</th>
+                                <th colspan="4">Cultural Understanding</th>
+                                <th colspan="4">Captioning</th>
+                                <th colspan="4">Short VQA</th>
+                                <th colspan="4">Multi-subject Reasoning</th>
+                            </tr>
+                            <tr>
+                                <th>en</th>
+                                <th>mul</th>
+                                <th>xChatBench en</th>
+                                <th>xChatBench mul</th>
+                                <th>M-LlavaBench en</th>
+                                <th>M-LlavaBench mul</th>
+                                <th>CVQA en</th>
+                                <th>CVQA mul</th>
+                                <th>MaRVL en</th>
+                                <th>MaRVL mul</th>
+                                <th>XM100 en</th>
+                                <th>XM100 mul</th>
+                                <th>xGQA en</th>
+                                <th>xGQA mul</th>
+                                <th>MaXM en</th>
+                                <th>MaXM mul</th>
+                                <th>xMMMU en</th>
+                                <th>xMMMU mul</th>
+                                <th>M3Exam en</th>
+                                <th>M3Exam mul</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="highlight-gray">
+                                <td colspan="22"><i>Proprietary Models</i></td>
+                            </tr>
+                            <tr>
+                                <td>Gemini-1.5-Pro</td>
+                                <td>67.1</td>
+                                <td>62.5</td>
+                                <td>67.0</td>
+                                <td>54.4</td>
+                                <td>103.4</td>
+                                <td>106.6</td>
+                                <td>75.9</td>
+                                <td>75.7</td>
+                                <td>76.4</td>
+                                <td>72.0</td>
+                                <td>27.6</td>
+                                <td>19.1</td>
+                                <td>54.2</td>
+                                <td>48.7</td>
+                                <td>56.4</td>
+                                <td>63.5</td>
+                                <td>65.8</td>
+                                <td>57.7</td>
+                                <td>77.4</td>
+                                <td>64.7</td>
+                            </tr>
+                            <tr>
+                                <td>GPT4o</td>
+                                <td>68.6</td>
+                                <td>64.6</td>
+                                <td>71.0</td>
+                                <td>64.4</td>
+                                <td>104.6</td>
+                                <td>100.4</td>
+                                <td>79.1</td>
+                                <td>79.4</td>
+                                <td>81.4</td>
+                                <td>82.1</td>
+                                <td>27.7</td>
+                                <td>19.1</td>
+                                <td>55.8</td>
+                                <td>51.0</td>
+                                <td>60.7</td>
+                                <td>65.4</td>
+                                <td>69.1</td>
+                                <td>58.3</td>
+                                <td>68.0</td>
+                                <td>61.0</td>
+                            </tr>
+                            <tr class="highlight-gray">
+                                <td colspan="22"><i>English Models</i></td>
+                            </tr>
+                            <tr>
+                                <td>Llava-1.5-7B</td>
+                                <td>45.4</td>
+                                <td>28.4</td>
+                                <td>28.5</td>
+                                <td>11.8</td>
+                                <td>66.1</td>
+                                <td>40.8</td>
+                                <td>48.9</td>
+                                <td>36.5</td>
+                                <td>56.2</td>
+                                <td>53.7</td>
+                                <td>28.6</td>
+                                <td>1.1</td>
+                                <td>62.0</td>
+                                <td>30.6</td>
+                                <td>49.8</td>
+                                <td>20.4</td>
+                                <td>36.2</td>
+                                <td>31.5</td>
+                                <td>32.3</td>
+                                <td>29.0</td>
+                            </tr>
+                            <tr>
+                                <td>Llava-Next-7B</td>
+                                <td>51.1</td>
+                                <td>32.7</td>
+                                <td>40.5</td>
+                                <td>18.9</td>
+                                <td>78.9</td>
+                                <td>50.7</td>
+                                <td>55.7</td>
+                                <td>42.6</td>
+                                <td>62.8</td>
+                                <td>50.9</td>
+                                <td>29.3</td>
+                                <td>9.4</td>
+                                <td>64.8</td>
+                                <td>37.8</td>
+                                <td>54.9</td>
+                                <td>21.4</td>
+                                <td>36.7</td>
+                                <td>34.3</td>
+                                <td>36.5</td>
+                                <td>28.4</td>
+                            </tr>
+                            <tr>
+                                <td>Phi-3.5-Vision</td>
+                                <td>54.0</td>
+                                <td>35.0</td>
+                                <td>38.5</td>
+                                <td>13.2</td>
+                                <td>70.8</td>
+                                <td>58.0</td>
+                                <td>56.3</td>
+                                <td>42.3</td>
+                                <td>72.1</td>
+                                <td>56.5</td>
+                                <td>30.2</td>
+                                <td>5.2</td>
+                                <td>64.7</td>
+                                <td>38.4</td>
+                                <td>55.3</td>
+                                <td>25.0</td>
+                                <td>42.6</td>
+                                <td>38.8</td>
+                                <td>55.8</td>
+                                <td>37.2</td>
+                            </tr>
+                            <tr>
+                                <td>Cambrian-8B</td>
+                                <td>50.9</td>
+                                <td>36.4</td>
+                                <td>27.5</td>
+                                <td>11.3</td>
+                                <td>78.4</td>
+                                <td>61.8</td>
+                                <td>59.7</td>
+                                <td>47.5</td>
+                                <td>75.4</td>
+                                <td>61.8</td>
+                                <td>20.6</td>
+                                <td>9.9</td>
+                                <td>64.6</td>
+                                <td>39.8</td>
+                                <td>55.3</td>
+                                <td>28.7</td>
+                                <td>41.8</td>
+                                <td>33.2</td>
+                                <td>34.7</td>
+                                <td>33.4</td>
+                            </tr>
+                            <tr>
+                                <td>LLaVA-OV-7B</td>
+                                <td>59.5</td>
+                                <td>41.3</td>
+                                <td>51.0</td>
+                                <td>28.5</td>
+                                <td>89.7</td>
+                                <td>55.3</td>
+                                <td>65.2</td>
+                                <td>53.7</td>
+                                <td>72.7</td>
+                                <td>57.5</td>
+                                <td>30.6</td>
+                                <td>7.0</td>
+                                <td>64.4</td>
+                                <td>48.2</td>
+                                <td>54.9</td>
+                                <td>34.8</td>
+                                <td>46.3</td>
+                                <td>41.0</td>
+                                <td>60.4</td>
+                                <td>45.8</td>
+                            </tr>
+                            <tr>
+                                <td>Molmo-7B-D</td>
+                                <td>55.4</td>
+                                <td>34.1</td>
+                                <td>49.5</td>
+                                <td>21.1</td>
+                                <td>95.9</td>
+                                <td>13.8</td>
+                                <td>59.4</td>
+                                <td>48.3</td>
+                                <td>65.3</td>
+                                <td>54.9</td>
+                                <td>22.1</td>
+                                <td>9.1</td>
+                                <td>51.5</td>
+                                <td>43.0</td>
+                                <td>52.9</td>
+                                <td>37.5</td>
+                                <td>44.5</td>
+                                <td>40.4</td>
+                                <td>57.1</td>
+                                <td>39.1</td>
+                            </tr>  
+                            <tr>
+                                <td>Llama3.2-11B</td>
+                                <td>57.2</td>
+                                <td>41.9</td>
+                                <td>49.0</td>
+                                <td>27.8</td>
+                                <td>93.9</td>
+                                <td>58.2</td>
+                                <td>70.2</td>
+                                <td>61.4</td>
+                                <td>64.5</td>
+                                <td>58.1</td>
+                                <td>27.6</td>
+                                <td>4.5</td>
+                                <td>55.6</td>
+                                <td>45.4</td>
+                                <td>55.3</td>
+                                <td>43.9</td>
+                                <td>46.5</td>
+                                <td>41.4</td>
+                                <td>51.8</td>
+                                <td>36.6</td>
+                            </tr>
+                            <tr class="highlight-gray">
+                                <td colspan="22"><i>Multilingual Models</i></td>
+                            </tr>
+                            <tr>
+                                <td>PaliGemma-3B</td>
+                                <td>37.3</td>
+                                <td>25.8</td>
+                                <td>6.0</td>
+                                <td>3.5</td>
+                                <td>32.1</td>
+                                <td>31.9</td>
+                                <td>52.9</td>
+                                <td>42.9</td>
+                                <td>56.5</td>
+                                <td>52.2</td>
+                                <td>18.7</td>
+                                <td>0.8</td>
+                                <td>59.7</td>
+                                <td>30.5</td>
+                                <td>47.9</td>
+                                <td>19.9</td>
+                                <td>26.3</td>
+                                <td>25.2</td>
+                                <td>36.0</td>
+                                <td>25.6</td>
+                            </tr>
+                            <tr>
+                                <td>PALO-7B</td>
+                                <td>46.3</td>
+                                <td>32.2</td>
+                                <td>27.0</td>
+                                <td>11.8</td>
+                                <td>68.9</td>
+                                <td>71.2</td>
+                                <td>50.9</td>
+                                <td>39.2</td>
+                                <td>63.3</td>
+                                <td>54.2</td>
+                                <td>30.4</td>
+                                <td>0.8</td>
+                                <td>60.5</td>
+                                <td>37.8</td>
+                                <td>51.4</td>
+                                <td>16.3</td>
+                                <td>33.1</td>
+                                <td>30.5</td>
+                                <td>30.8</td>
+                                <td>27.8</td>
+                            </tr>
+                            <tr>
+                                <td>mBLIP mT0-XL</td>
+                                <td>35.1</td>
+                                <td>29.8</td>
+                                <td>2.5</td>
+                                <td>0.5</td>
+                                <td>32.7</td>
+                                <td>28.2</td>
+                                <td>40.5</td>
+                                <td>37.5</td>
+                                <td>67.3</td>
+                                <td>66.7</td>
+                                <td>31.9</td>
+                                <td>3.1</td>
+                                <td>44.2</td>
+                                <td>39.9</td>
+                                <td>44.7</td>
+                                <td>36.8</td>
+                                <td>29.3</td>
+                                <td>30.4</td>
+                                <td>22.8</td>
+                                <td>25.0</td>
+                            </tr>
+                            <tr>
+                                <td>mBLIP BLOOMZ</td>
+                                <td>36.1</td>
+                                <td>30.0</td>
+                                <td>4.0</td>
+                                <td>1.6</td>
+                                <td>43.5</td>
+                                <td>41.0</td>
+                                <td>44.9</td>
+                                <td>36.9</td>
+                                <td>62.3</td>
+                                <td>58.6</td>
+                                <td>22.5</td>
+                                <td>10.3</td>
+                                <td>43.3</td>
+                                <td>36.9</td>
+                                <td>44.7</td>
+                                <td>24.8</td>
+                                <td>29.2</td>
+                                <td>30.8</td>
+                                <td>30.3</td>
+                                <td>29.5</td>
+                            </tr>
+                            <tr class="highlight-gray">
+                                <td colspan="22"><i>Multilingual Models</i></td>
+                            </tr>
+                            <tr>
+                                <td>PANGEA-7B (Ours)</td>
+                                <td>59.9</td>
+                                <td>52.7</td>
+                                <td>46.0</td>
+                                <td>35.6</td>
+                                <td>84.2</td>
+                                <td>89.5</td>
+                                <td>64.4</td>
+                                <td>57.2</td>
+                                <td>87.0</td>
+                                <td>79.0</td>
+                                <td>30.4</td>
+                                <td>14.2</td>
+                                <td>64.7</td>
+                                <td>60.2</td>
+                                <td>55.3</td>
+                                <td>53.2</td>
+                                <td>45.7</td>
+                                <td>43.7</td>
+                                <td>61.4</td>
+                                <td>42.1</td>
+                            </tr>
+                            <tr>
+                                <td>Δ over SoTA Open</td>
+                                <td>+0.4</td>
+                                <td>+10.8</td>
+                                <td>-3.5</td>
+                                <td>+7.1</td>
+                                <td>-11.7</td>
+                                <td>+18.3</td>
+                                <td>-5.8</td>
+                                <td>-4.2</td>
+                                <td>+11.6</td>
+                                <td>+12.3</td>
+                                <td>-0.2</td>
+                                <td>+3.9</td>
+                                <td>-0.1</td>
+                                <td>+12.0</td>
+                                <td>0.0</td>
+                                <td>+9.3</td>
+                                <td>-0.8</td>
+                                <td>+2.3</td>
+                                <td>+1.0</td>
+                                <td>-3.7</td>
+                            </tr>
+                                                  
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <figcaption style="text-align: center; width: 100%;">
+                Table 1: Models' multilingual multimodal evaluation results on PangeaBench.
+            </figcaption>
+
+            <p class="text">
+                <strong>Multilingual Multimodal Results</strong>
+                We show the performance of models on the multimodal tasks from PangeaBench in <a href="#tab:final_table">Table 1</a>.
+                The results provide clear insights into the strengths and remaining challenges of Pangea-7B in multilingual and multimodal tasks. Key observations from the evaluation include:
+                <br>
+                1) Superior English and Multilingual Performance: Pangea-7B outperforms existing open-source models across both English and multilingual tasks. Particularly in cultural understanding (CVQA, MaRVL), it has achieved substantial gains, highlighting its effectiveness in both cross-lingual and cross-cultural contexts.
+                <br>
+                2) Balanced Cross-Language Capabilities: Unlike many models that exhibit a significant drop in performance when moving from English to multilingual tasks, Pangea-7B is relatively consistent. For instance, in Multimodal Chat tasks, the performance gap between English and multilingual remains relatively small, indicating its ability to handle multiple languages effectively.
+                <br>
+                3) Challenges Compared to Proprietary Models: While Pangea-7B leads in open-source models, some gaps remain when compared to closed-source models like GPT4o. Additionally, though Pangea-7B narrows the gap between English and multilingual performance, there is still room for improvement in fully closing this divide across all tasks.
+            </p>
+
+            <p class="text">
+                <strong>Multilingual Text-only Results</strong>
+                We further evaluate our model in text-only scenarios in <a href="#tab:text_table">Table 2</a>. Interesting findings include:
+                <br>
+                1) Best Text Performance Among Multimodal LLMs: Pangea-7B demonstrates the strongest performance among all multimodal LLMs in the text-only tasks consistently outperforming baselines like Llava-Next-7B. This highlights that, despite being trained as a multimodal model, Pangea-7B maintains superior text understanding and reasoning capabilities compared to other MLLMs.
+                <br>
+                2) Maintained Performance from its Text Backbone:  Pangea-7B generally maintains or sees slight drops in performance on most text-only benchmarks compared with its text backbone Qwen2-7B-Instruct. Notably, the model shows a significant improvement in MGSM. This improvement is directly attributable to the inclusion of math-related instructions in PangeaIns, which enhances the model's capability to handle complex multilingual reasoning and mathematical tasks.
+            </p>
+
+            <div id="tab:text_table" style="display: flex; flex-direction: column; align-items: center;" class="figure">
+                <div class="table-container">
+                    <table class="data-table" style="border-collapse: collapse; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">Models</th>
+                                <th colspan="2">AVG (all)</th>
+                                <th colspan="2">FLORES-Sub</th>
+                                <th colspan="2">TyDiQA</th>
+                                <th colspan="2">XStoryCloze</th>
+                                <th colspan="2">MGSM</th>
+                                <th colspan="2">MMMLU</th>
+                            </tr>
+                            <tr>
+                                <th>en</th>
+                                <th>mul</th>
+                                <th>x->en</th>
+                                <th>en->x</th>
+                                <th>en</th>
+                                <th>mul</th>
+                                <th>en</th>
+                                <th>mul</th>
+                                <th>en</th>
+                                <th>mul</th>
+                                <th>en</th>
+                                <th>mul</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Vicuna-1.5-7B</td>
+                                <td>52.1</td>
+                                <td>38.7</td>
+                                <td>55.6</td>
+                                <td>42.4</td>
+                                <td>59.7</td>
+                                <td>52.7</td>
+                                <td>78.1</td>
+                                <td>57.4</td>
+                                <td>17.6</td>
+                                <td>6.4</td>
+                                <td>49.5</td>
+                                <td>34.7</td>
+                            </tr>
+                            <tr>
+                                <td>Qwen2-7B-Instruct</td>
+                                <td>66.6</td>
+                                <td><b>54.5</b></td>
+                                <td><b>61.8</b></td>
+                                <td><b>46.0</b></td>
+                                <td>72.2</td>
+                                <td><b>71.2</b></td>
+                                <td><b>80.3</b></td>
+                                <td><b>61.9</b></td>
+                                <td>48.8</td>
+                                <td>40.4</td>
+                                <td><b>70.1</b></td>
+                                <td><b>53.1</b></td>
+                            </tr>
+                            <tr>
+                                <td>Llava-1.5-7B</td>
+                                <td>53.1</td>
+                                <td>39.0</td>
+                                <td>54.7</td>
+                                <td>41.5</td>
+                                <td>66.8</td>
+                                <td>52.8</td>
+                                <td>79.1</td>
+                                <td>57.6</td>
+                                <td>14.8</td>
+                                <td>7.6</td>
+                                <td>50.2</td>
+                                <td>35.7</td>
+                            </tr>
+                            <tr>
+                                <td>Llava-Next-7B</td>
+                                <td>54.0</td>
+                                <td>38.9</td>
+                                <td>54.8</td>
+                                <td>41.4</td>
+                                <td>68.3</td>
+                                <td>52.1</td>
+                                <td>79.1</td>
+                                <td>57.1</td>
+                                <td>15.6</td>
+                                <td>7.5</td>
+                                <td>52.1</td>
+                                <td>36.5</td>
+                            </tr>
+                            <tr>
+                                <td>Phi-3.5-Vision</td>
+                                <td>60.7</td>
+                                <td>41.7</td>
+                                <td>28.5</td>
+                                <td>32.5</td>
+                                <td><b>75.9</b></td>
+                                <td>51.3</td>
+                                <td>77.9</td>
+                                <td>54.8</td>
+                                <td>59.2</td>
+                                <td>33.1</td>
+                                <td>62.0</td>
+                                <td>36.7</td>
+                            </tr>
+                            <tr>
+                                <td>PALO-7B</td>
+                                <td>52.0</td>
+                                <td>37.5</td>
+                                <td>52.9</td>
+                                <td>40.4</td>
+                                <td>69.4</td>
+                                <td>50.8</td>
+                                <td>77.4</td>
+                                <td>57.2</td>
+                                <td>13.6</td>
+                                <td>5.8</td>
+                                <td>46.7</td>
+                                <td>33.4</td>
+                            </tr>
+                            <tr>
+                                <td>PANGEA-7B (Ours)</td>
+                                <td><b>72.8</b></td>
+                                <td>54.3</td>
+                                <td>60.7</td>
+                                <td>44.9</td>
+                                <td>73.7</td>
+                                <td>66.0</td>
+                                <td>79.1</td>
+                                <td>61.2</td>
+                                <td><b>82.0</b></td>
+                                <td><b>47.4</b></td>
+                                <td>68.4</td>
+                                <td>52.2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <figcaption style="text-align: center; width: 100%;">
+                Table 2: Models' multilingual text-only evaluation results on PangeaBench.
+            </figcaption>
+        
+
+        </div>
+
+        <div id='dicussion' class="discussion-block">
+            <h1 class="text">Discussion</h1>
+
+            <d-figure id="fig:scaling_effect">
+                <figure>
+                    <img data-zoomable="" draggable="false" src="static/img/scaling_effect.png" alt="scaling effect">
+                    <figcaption>
+                        <strong>Figure 5:</strong> Scaling effect of training samples on English and multilingual scores across datasets.
+                    </figcaption>
+                </figure>
+            </d-figure>
+
+            <p class="text">
+                <strong>Scaling Effect of Number of Instructions:</strong>
+                Understanding how the quantity of instructions affects model performance is crucial for optimizing training strategies and resource allocation. 
+                <a href="#fig:scaling_effect">Figure 5</a> reveals a clear scaling effect related to the number of instructions used during training. 
+                Performance improvements were consistent as we increased the number of multilingual instructions in PangeaIns, for both English and multilingual performance. 
+                This demonstrates the necessity of scaling multilingual multimodal instruction tuning. 
+            </p>
+
+            <d-figure id="fig:english_ratio">
+                <figure>
+                    <img data-zoomable="" draggable="false" src="static/img/english_vs_multilingual.png" alt="english_vs_multilingual">
+                    <figcaption>
+                        <strong>Figure 6:</strong> Impact of English training data proportion on English vs. multilingual performance.
+                    </figcaption>
+                </figure>
+            </d-figure>
+
+            <p class="text">
+                <strong>Role of English Data:</strong>
+                In multilingual scenarios, English data plays a pivotal role in cross-lingual transfer. 
+                To investigate this, we sampled 500K examples from the translated data described in <a href="#machine_translation">Machine Translated Instructions</a>, ensuring a consistent data distribution. 
+                We varied the ratio of English data while keeping the total number of training samples fixed at 500K. 
+                For the 17 multilingual languages in the translated subset, we evenly distributed the number of samples across languages. 
+                As shown in <a href="#fig:english_ratio">Figure 6</a>, English performance generally improves as the percentage of English data increases. 
+                More surprisingly, using no English data (full multilingual data) results in relatively lower multilingual performance. 
+                As we introduce more English data, multilingual performance improves, peaking at 38.7% with 40% English. 
+                However, performance drops sharply when English data reaches 100%. 
+                This suggests that English data aids cross-lingual transfer, however, over-reliance on it harms multilingual performance. 
+            </p>
+        </div>
+
+        <d-figure id="fig:language_portion_downstream_performance">
+            <figure>
+                <img data-zoomable="" draggable="false" src="static/img/train_eval_perf_percentage.png" alt="train_eval_perf_percentage">
+                <figcaption>
+                    <strong>Figure 7:</strong> The relationship between training sample size (relative to English) and performance (relative to English) of different languages across four datasets.
+                </figcaption>
+            </figure>
+        </d-figure>
+
+        <p class="text">
+            <strong>How does the proportion of training samples in a language affect downstream performance?</strong>
+            An interesting question to ask is whether the downstream task performance is correlated with the number of training samples. 
+            Our analysis revealed a nuanced relationship between training sample proportion and downstream performance. 
+            While there is a general positive correlation, the impact varies significantly across languages and tasks. 
+            For widely spoken languages with rich linguistic resources, we observed a near-linear relationship. 
+            However, for low-resource languages, even a small increase in proportion yielded disproportionately large performance gains. 
+            Interestingly, we also noted instances of positive transfer between typologically similar languages. 
+            These findings suggest that strategic allocation of training samples, considering both language prevalence and linguistic similarities, can optimize overall model performance.
+        </p>
+
+        <d-figure id="fig:ocr_accuracy">
+            <figure>
+                <img data-zoomable="" draggable="false" src="static/img/ocr_accuracy.png" alt="ocr_accuracy">
+                <figcaption>
+                    <strong>Figure 8:</strong> A preliminary exploration of multilingual OCR.
+                </figcaption>
+            </figure>
+        </d-figure>
+
+        <p class="text">
+            <strong>Preliminary Explorations of Multilingual OCR:</strong>
+            Multilingual OCR emerged as a particularly challenging aspect of Pangea's functionality. 
+            We made efforts to enhance its multilingual OCR capabilities. 
+            Specifically, we constructed a dataset of 500K multilingual OCR instructions spanning 10 languages, with 50K examples per language, sourced from web user interfaces. 
+            Webpages naturally serve as image-rich environments containing abundant text, and by capturing screenshots of websites from various countries in different languages, we were able to gather a substantial number of OCR images. 
+            We employed the same model architecture as Pangea but trained it exclusively on these OCR images, reserving a portion of the data as a test set. As shown in <a href="#fig:ocr_accuracy">Figure 8</a>, the results indicate that improving multilingual OCR performance is feasible with an increase in training samples. 
+            However, the OCR accuracy for non-Latin scripts (e.g., Chinese, Japanese, and Korean) remains lower than for Latin-based languages. 
+            Looking ahead, we aim to further expand the multilingual OCR training dataset to include more languages and integrate this data into PangeaIns.
+        </p>
+
+    </div>
+
+        <div id="conclusion" style="position: relative; margin-top: 40px; margin-bottom: 0px;">
+            <h2 class="text" style="margin-top:0px; margin-bottom:10px">Conclusion</h2>
+            <p class="text">
+                To conclude, Cambrian-1 is a family of state-of-the-art MLLMs that achieve top performance across diverse benchmarks 
+                and excel in visual-centric tasks. We provide model weights, open-source code, datasets, and detailed recipes for model training and evaluation. 
+                We hope our work will strengthen the open research community and accelerate research in both visual representation learning and multimodal systems.
+            </p>
+        </div>
+
+        </d-article>
+        <d-appendix>
+            <h3>BibTeX</h3>
+            <p class="bibtex">
+                @article{tong2024cambrian,<br>
+                &nbsp;&nbsp;title={{Cambrian-1: A Fully Open, Vision-Centric Exploration of Multimodal LLMs}},<br>
+                &nbsp;&nbsp;author={Tong, Shengbang and Brown, Ellis and Wu, Penghao and Woo, Sanghyun and Middepogu, Manoj and Akula, Sai Charitha and Yang, Jihan and Yang, Shusheng, and Iyer, Adithya and Pan, Xichen and Wang, Austin and Fergus, Rob and LeCun, Yann and Xie, Saining},<br>
+                &nbsp;&nbsp;journal={arXiv preprint arXiv:2406.16860},<br>
+                &nbsp;&nbsp;year={2024}<br>
+                }
+            </p>
+
+            <d-footnote-list></d-footnote-list>
+            <d-citation-list></d-citation-list>
+        </d-appendix>   
+        <!-- bibliography will be inlined during Distill pipeline's pre-rendering -->
+        <d-bibliography src="bibliography.bib"></d-bibliography>
+        <script src="./static/js/nav-bar.js"></script>
+    </body>
+</html>
