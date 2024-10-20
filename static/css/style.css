@@ -522,7 +522,12 @@ div .active-button,
   box-shadow: 0 6px #666; /* Change in shadow */
   transform: translateY(-2px); /* Slight raise */
 }
-
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 .interactive-image {
   display: flex;
   flex-direction: column;
