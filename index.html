@@ -161,22 +161,22 @@
             <ol class="text">
                 <li><strong><a href="#model">&sect;Pangea-7B</a></strong>: a strong multilingual multimodal LLM capable of 39 languages.</li>
                 <li><strong><a href="#instruction_data">&sect;Instruction Tuning Data</a></strong>: We construct a instruction tuning dataset PangeaIns, a diverse dataset with 6 million multilingual multimodal instruction tuning data spanning 39 languages, which Pangea-7B is trained on.</li>
-                <li><strong><a href="#sec:benchmarking">&sect;Benchmarking</a></strong>: We construct a multilingual multimodal evaluation benchmark PangeaBench, including 14 datasets spanning 47 languages, which Pangea-7B is evaluated on.</li>
+                <li><strong><a href="#benchmarking">&sect;Benchmarking</a></strong>: We construct a multilingual multimodal evaluation benchmark PangeaBench, including 14 datasets spanning 47 languages, which Pangea-7B is evaluated on.</li>
             </ol>
         </p>
 
         <div class="icon-row">
-            <a href="#Pangea-7B" class="icon-link">
+            <a href="#model" class="icon-link">
                 <img src="static/img/icons/pangea_logo.png" alt="Pangea Logo" class="icon">
-                Modeling<br>Pangea-7B
+                Pangea-7B<br>(Modeling)
             </a>
             <a href="#instruction_data" class="icon-link">
                 <img src="static/img/icons/data.png" alt="Data Logo" class="icon">
-                Instruction Data<br>PangeaIns
+                PangeaIns<br>(Instruction Data)
             </a>
             <a href="#benchmarking" class="icon-link">
                 <img src="static/img/icons/eval.png" alt="Eval Logo" class="icon">
-                Benchmarking<br>PangeaBench
+                PangeaBench<br>(Benchmarking)
             </a>
         </div>
 
@@ -187,11 +187,9 @@
 
 
         <p class="text abstract">
-            To this end, Pangea-7B not only achieves state-of-the-art performance, but also serves as a comprehensive, open cookbook for instruction-tuned multilingual multicultural MLLMs. See <a href="#State-of-the-art-MLLM-performance">§State-of-the-art MLLM performance</a>. 
-            We provide <a href="https://huggingface.co/nyu-visionx" target="_blank">model weights</a>, 
-            <a href="https://github.com/cambrian-mllm/cambrian" target="_blank">code</a>, 
-            <a href="https://huggingface.co/nyu-visionx" target="_blank">datasets</a>, 
-            and detailed instruction-tuning and evaluation recipes. We hope our release will inspire and accelerate advancements in multimodal systems and visual representation learning.
+            Pangea-7B not only sets a new multilingual multicultural multimodal model, but also acts as an extensive, open-source guide for developing instruction-tuned multilingual and multicultural MLLMs. 
+            Pangea is completely open-source, including [model weights](https://huggingface.co/neulab/Pangea-7B), instruction-tuning data [PangeaIns](https://huggingface.co/datasets/neulab/PangeaInstruct), and [code for instruction-tuning and evaluation](https://github.com/xiangyue9607/Pangea). 
+            Our aim is to facilitate the development of inclusive and robust multilingual MLLMs, prompting equity and accessibility across a broader linguistic and cultural spectrum.
         </p>
         
         <hr>
@@ -1041,7 +1039,7 @@
             These findings suggest that strategic allocation of training samples, considering both language prevalence and linguistic similarities, can optimize overall model performance.
         </p>
 
-        <d-figure id="fig:ocr_accuracy" style="text-align: center; width: 80%;">
+        <d-figure id="fig:ocr_accuracy" style="text-align: center; width: 50%;">
             <figure>
                 <img data-zoomable="" draggable="false" src="static/img/ocr_accuracy.png" alt="ocr_accuracy">
                 <figcaption>
