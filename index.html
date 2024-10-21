@@ -148,21 +148,43 @@
             <span class="author-note"><sup>&dagger;</sup>Corresponding author</span>
         </p>
         
-
-        
         <p class="text abstract">
 
             We introduce Pangea-7B, a fully open multilingual multimodal language model (MLLM) designed to bridge multilingual and multicultural gaps in visual understanding tasks. 
             Pangea-7B is trained on PangeaIns, a diverse 6M instruction dataset spanning 39 languages.
             Pangea-7B is evaluated on PangeaBench, a holistic evaluation suite encompassing 14 datasets covering 47 languages.
-            Pangea-7B demonstrates state-of-the-art results, outperforming existing open models in multilingual and culturally diverse contexts.
-            <br><br>
+            As demonstrated in <a href="#fig:teaser">Figure 1</a>, Pangea-7B demonstrates state-of-the-art results, outperforming existing open models in multilingual and culturally diverse contexts.
+        </p>
+        <d-figure id="fig:teaser" style="display: flex; justify-content: center;">
+            <figure>
+                <img data-zoomable="" draggable="false" src="static/img/teaser.png" alt="teaser" style="width: 80%" class="center">
+                <figcaption>
+                    <strong>Figure 1:</strong> Overview of the aggregate performance of various multimodal LLMs on PangeaBench. Our Pangea-7B demonstrates comparable performance to SoTA open-source models in English settings, while significantly outperforming them in multilingual scenarios.
+                </figcaption>
+            </figure>
+        </d-figure>
+
+        <p class="text abstract">
             Pangea is structured around three key aspects, each offering important insights into the design space of MLLMs:
             <ol class="text">
                 <li><strong><a href="#model">&sect;Pangea-7B</a></strong>: a strong multilingual multimodal LLM capable of 39 languages.</li>
-                <li><strong><a href="#instruction_data">&sect;Instruction Tuning Data</a></strong>: We construct a instruction tuning dataset PangeaIns, a diverse dataset with 6 million multilingual multimodal instruction tuning data spanning 39 languages, which Pangea-7B is trained on.</li>
+                <li><strong><a href="#instruction_data">&sect;Instruction Tuning Data</a></strong>: We construct a instruction tuning dataset PangeaIns, a diverse dataset with 6 million multilingual multimodal instruction tuning data spanning 39 languages, which Pangea-7B is trained on. <a href="#fig:train_data_distribution">Figure 2</a> shows the data distribution of PangeaIns. </li>
                 <li><strong><a href="#benchmarking">&sect;Benchmarking</a></strong>: We construct a multilingual multimodal evaluation benchmark PangeaBench, including 14 datasets spanning 47 languages, which Pangea-7B is evaluated on.</li>
             </ol>
+        </p>
+
+        <figure id="fig:train_data_distribution">
+            <img data-zoomable="" draggable="false" src="static/img/dataset_task_distribution.png" alt="train data distribution">
+            <figcaption>
+                <strong>Figure 2:</strong> Statistics of PangeaIns, which comprises 6M multimodal instructions in 39 languages. 
+                PangeaIns includes general instructions, document and chart question answering, captioning, domain-specific, culturally relevant, and text-only instructions.
+            </figcaption>
+        </figure>
+
+        <p class="text abstract">
+            Pangea-7B not only sets a new multilingual multicultural multimodal model, but also acts as an extensive, open-source guide for developing instruction-tuned multilingual and multicultural MLLMs. 
+            Pangea is completely open-source, including <a href="https://huggingface.co/neulab/Pangea-7B" target="_blank">model weights</a>, instruction-tuning data <a href="https://huggingface.co/datasets/neulab/PangeaInstruct" target="_blank">PangeaIns</a>, and <a href="https://github.com/xiangyue9607/Pangea" target="_blank">instruction-tuning and evaluation code</a>. 
+            Our aim is to facilitate the development of inclusive and robust multilingual MLLMs, prompting equity and accessibility across a broader linguistic and cultural spectrum.
         </p>
 
         <div class="icon-row">
@@ -183,13 +205,6 @@
         <p class="click-hint" style="width: 85%;">
             <img src="static/img/icons/click.gif" style="width: 1.5rem">
             <strong>Click to jump to each section.</strong>
-        </p>
-
-
-        <p class="text abstract">
-            Pangea-7B not only sets a new multilingual multicultural multimodal model, but also acts as an extensive, open-source guide for developing instruction-tuned multilingual and multicultural MLLMs. 
-            Pangea is completely open-source, including <a href="https://huggingface.co/neulab/Pangea-7B" target="_blank">model weights</a>, instruction-tuning data <a href="https://huggingface.co/datasets/neulab/PangeaInstruct" target="_blank">PangeaIns</a>, and <a href="https://github.com/xiangyue9607/Pangea" target="_blank">instruction-tuning and evaluation code</a>. 
-            Our aim is to facilitate the development of inclusive and robust multilingual MLLMs, prompting equity and accessibility across a broader linguistic and cultural spectrum.
         </p>
         
         <hr>
@@ -232,18 +247,11 @@
                 </p>
                 <p class="text">
                     <strong>3) Balanced data distribution:</strong> PangeaIns features an extensive and balanced distribution of languages, tasks, and cultural contexts (as shown in 
-                    <a href="#fig:train_data_distribution">Figure 1</a>).
+                    <a href="#fig:train_data_distribution">Figure 2</a>).
                 </p>
                 <p class="text">
                     <strong>4) PangeaBench:</strong> To evaluate Pangea-7B capabilities, we present PangeaBench, a comprehensive multilingual and multimodal evaluation suite comprising five multimodal and three text-based tasks across 14 datasets in 47 languages. PangeaBench assesses MLLMs' performance on open-domain multimodal chat, image captioning, cultural understanding, multimodal reasoning, and text-only tasks including question answering and complex math reasoning.
                 </p>
-        
-                <figure id="fig:train_data_distribution">
-                    <img data-zoomable="" draggable="false" src="static/img/dataset_task_distribution.png" alt="train data distribution">
-                    <figcaption>
-                        <strong>Figure 1:</strong> Statistics of our PangeaIns, which comprises 6M multimodal instructions in 39 languages. PangeaIns includes general instructions, document and chart question answering, captioning, domain-specific, culturally relevant, and text-only instructions.
-                    </figcaption>
-                </figure>
             </div>
         </div>
 
@@ -255,7 +263,7 @@
                 PangeaIns features an extensive and balanced distribution of languages, tasks, and cultural contexts. 
                 Comprising 6 million samples in 39 languages, PangeaIns was curated with a focus on linguistic and cultural diversity. 
                 We empirically keep the final language ratio of English to Multilingual as 40%:60% as we found a significant portion of English data plays an important role in cross-lingual transfer. This is discussed in more details in (see <a href="#discussion">Discussion</a>).
-                <a href="#fig:train_data_distribution">Figure 1</a> shows the details of our PangeaIns's distribution. 
+                <a href="#fig:train_data_distribution">Figure 2</a> shows the details of our PangeaIns's distribution. 
                 We implemented three key strategies to ensure comprehensive coverage, each addressing the specific hurdles encountered in multilingual multimodal learning. 
             </p>
     
@@ -263,7 +271,7 @@
                 <h3 class="text">Machine Translated Instructions</h3>
                 <p class="text" id="machine_translation">
                     We first create a high-quality set of English multimodal instructions, which serve as the foundation for translation into other languages.
-                    <a href="#fig:train_data_distribution">Figure 1</a> shows the statistics of our translated datasets.
+                    <a href="#fig:train_data_distribution">Figure 2</a> shows the statistics of our translated datasets.
                     Then, we use the proprietary model Gemini 1.5 Pro <d-cite key="deepmind_gemini_report"></d-cite> to translate the English instructions into 17 languages.
                     Lastly, we developed a post-processing pipeline. This pipeline automatically corrected these errors or directly dropped the examples, ensuring that all translated instructions remained consistent.
                 </p>
@@ -273,13 +281,13 @@
                 <p class="text">
                     While machine translation enables us to scale across multiple languages, data translated from English is still Anglo-centric in its coverage of cultural <d-cite key="yu-etal-2022-beyond"></d-cite>.
                     To address this, we developed a pipeline focused on creating instructions for multicultural understanding. 
-                    The pipeline of creating multicultural understanding instructions is shown in <a href="#fig:cultural_understanding_pipeline">Figure 2</a>.
+                    The pipeline of creating multicultural understanding instructions is shown in <a href="#fig:cultural_understanding_pipeline">Figure 3</a>.
                 </p>
                 <d-figure id="fig:cultural_understanding_pipeline">
                     <figure>
                         <img data-zoomable="" draggable="false" src="static/img/cultural_data_gen_pipeline.png" alt="Overview of multicultural understanding instructions data generation pipeline.">
                         <figcaption>
-                            <strong>Figure 2:</strong> Overview of multicultural understanding instructions data generation pipeline.
+                            <strong>Figure 3:</strong> Overview of multicultural understanding instructions data generation pipeline.
                         </figcaption>
                     </figure>
                 </d-figure>
@@ -326,7 +334,7 @@
             <h1 class="text">PangeaBench: Evaluation of Multilingual Multimodal Models</h1>
             <p class="text">
                 To assess the capabilities of Pangea-7B across a variety of languages, cultures, and task types, we have developed PangeaBench, a comprehensive multilingual and multimodal evaluation suite.
-                The overview and examples of PangeaBench from each task are shown in <a href="#fig:eval_data">Figure 3</a>.
+                The overview and examples of PangeaBench from each task are shown in <a href="#fig:eval_data">Figure 4</a>.
             </p>
             <div class="subsection">
                 <h3 class="text">Multimodal Tasks</h3>
@@ -367,7 +375,7 @@
                 <figure>
                     <img data-zoomable="" draggable="false" src="static/img/xmm_eval_example.png" alt="eval data">
                     <figcaption>
-                        <strong>Figure 3:</strong> Overview of PangeaBench, which contains 5 multimodal and 3 text tasks covering 14 datasets (including two newly curated xChatBench and xMMMU datasets). The table provides details about the datasets, while the figure shows evaluation examples from five different multimodal eval tasks in our PangeaBench.
+                        <strong>Figure 4:</strong> Overview of PangeaBench, which contains 5 multimodal and 3 text tasks covering 14 datasets (including two newly curated xChatBench and xMMMU datasets). The table provides details about the datasets, while the figure shows evaluation examples from five different multimodal eval tasks in our PangeaBench.
                     </figcaption>
                 </figure>
             </d-figure>
@@ -388,14 +396,6 @@
         <div id='eval' class="eval-block">
             <h1 class="text">Evaluation</h1>
 
-            <d-figure id="fig:teaser" style="display: flex; justify-content: center;">
-                <figure>
-                    <img data-zoomable="" draggable="false" src="static/img/teaser.png" alt="teaser" style="width: 80%" class="center">
-                    <figcaption>
-                        <strong>Figure 4:</strong> Overview of the aggregate performance of various multimodal LLMs on PangeaBench. Our Pangea-7B demonstrates comparable performance to SoTA open-source models in English settings, while significantly outperforming them in multilingual scenarios.
-                    </figcaption>
-                </figure>
-            </d-figure>
             
             <p class="text">
                 For evaluation, we compare Pangea-7B against several state-of-the-art open source baselines, including English-centric models Llava-1.5-7B <d-cite key="liu2023improvedllava"></d-cite>, Llava-Next-7B <d-cite key="liu2024llavanext"></d-cite>, Phi-3.5-Vision <d-cite key="abdin2024phi3technicalreporthighly"></d-cite>, Cambrian-8B <d-cite key="tong2024cambrian"></d-cite> and multilingual models PaliGemma-3B <d-cite key="beyer2024paligemma"></d-cite>, PALO-7B <d-cite key="PALO"></d-cite>, mBLIP mT0-XL and mBLIP BLOOMZ <d-cite key="geigle_etal_2024_mblip"></d-cite>. 
@@ -403,7 +403,7 @@
                 We integrate our multimodal tasks in PangeaBench into <a href="https://github.com/EvolvingLMMs-Lab/lmms-eval" target="_blank">lmms-eval</a> <d-cite key="lmms_eval2024"></d-cite>, a multimodal evaluation package that supports many English multimodal benchmarks. 
                 We use <a href="https://github.com/EleutherAI/lm-evaluation-harness" target="_blank">lm-evaluation-harness</a> <d-cite key="biderman2024lessons"></d-cite> to evaluate text-only tasks. 
                 We follow the original paper for their best models' prompts in different tasks.
-                <a href="#fig:teaser">Figure 4</a> shows the aggregate performance of various multimodal LLMs on PangeaBench.
+                <a href="#fig:teaser">Figure 1</a> shows the aggregate performance of various multimodal LLMs on PangeaBench.
             </p>
 
             <div id="tab:final_table" style="display: flex; flex-direction: column; align-items: center;" class="figure">
